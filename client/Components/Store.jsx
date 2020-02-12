@@ -13,6 +13,7 @@
  // the store component that will be displayed on route
  export default class Store extends Component {
 
+  // fake state for now 
   constructor() {
     super()
 
