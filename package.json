@@ -21,7 +21,11 @@
   "homepage": "https://github.com/aditumKBNW/aditumStore#readme",
   "dependencies": {
     "express": "^4.17.1",
+<<<<<<< HEAD
+    "nodemon": "^2.0.2",
+=======
     "pg": "^7.18.1",
+>>>>>>> dev
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2"

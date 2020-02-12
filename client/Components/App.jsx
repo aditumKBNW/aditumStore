@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import About from './About.jsx';
 import Store from './Store.jsx'
 
 

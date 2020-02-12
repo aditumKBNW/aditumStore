@@ -32,3 +32,30 @@
   background-color: rgba(230,230,250, .9);
   color: dodgerblue;
 }
+
+img#coffee {
+  height: 95vh;
+}
+
+#about {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+img#shape {
+  align-self: flex-end;
+  transform: rotate(90deg);
+  height: 35vh;
+  margin-right: 5em;
+  margin-top: 5em;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
