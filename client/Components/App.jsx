@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-
+import About from './About.jsx';
 
 class App extends Component {
 
   render () {
     return (
-      <h1>Hello World</h1>
+      <div>
+      <About />
+      </div>
     );
   }
 }
