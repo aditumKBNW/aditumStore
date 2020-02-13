@@ -17,12 +17,15 @@ const Product = props => {
   // price 
   // button to about page for each product
 
+  const {id, name, description, inventory, price} = props;
+
   return (
     <div className='product'>
-      <p>Product ID: {props.id}</p>
-      <p>{props.name}</p>
-      <p>{props.description}</p>
-      <button type='button' className='buy_button' >Buy now for: {props.price}</button>
+      <p>Product ID: {id}</p>
+      <p>{name}</p>
+      <p>{description}</p>
+      <p>In Stock: {inventory} </p>
+      <button type='button' className='buy_button' >Buy now for: {price}</button>
     </div>
   )
 }
