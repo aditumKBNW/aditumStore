@@ -9,7 +9,6 @@
  import React, { Component } from 'react';
  import Product from './Product.jsx';
  
-
  // the store component that will be displayed on route
  export default class Store extends Component {
 
@@ -18,38 +17,24 @@
     super()
 
     this.state = {
-      products: [ {
-        id: 1,
-        name: 'Breakfast snaxx',
-        description: 'Hungry? These snax will give you a mega boost, made out of bacon and eggs, leaves you with an aftertaste of maple syrup!',
-        price: 5,
-  
-      }, 
-      {
-        id: 2,
-        name: 'ring of truth',
-        description: 'Will give you the answer to that question you really need the answer to, will disappear on one use.',
-        price: 100,
-      },
-      {
-        id: 3,
-        name: 'Old Bike',
-        description: 'Bike made to look old, it really works we swear!',
-        price: 2,
-      },
-      {
-        id: 4,
-        name: 'Random item from our pocket',
-        description: 'We will ship out whatever is in our pocket at the time of purchase, might be nothing, might be a quarter, could be an iphone, its all up to fate.',
-        price: 10,
-      },
-      ],
       loading: true,
     } 
   }
 
 
   // lifecycle methods here will focus the updates
+  componentDidMount() {
+    // will set state to the fetched data from the api
+    fetch('/products')
+    .then(response => response.json())
+    .then(data => {
+      console.log('OUR DATA', data);
+      this.setState({
+        products: data,
+        loading: false,
+      });
+    });
+  }
   
   
   render() {
@@ -57,12 +42,17 @@
 
     // create products array, and render the fake products
     if (loading) {
-      const productsArr = [];
+      return (
+        <h3>We loading baby</h3>
+      );
+    }
 
+    else {
+      const productsArr = [];
       for (let i = 0; i < products.length; i += 1) {
-        const { id, name, description, price} = products[i];
+        const { id, name, description, price, inventory} = products[i];
         productsArr.push(
-        <Product id={id} name={name} description={description} price={price} />
+        <Product id={id} name={name} description={description} price={price} inventory={inventory}/>
         );
       }
 
@@ -73,7 +63,6 @@
           { productsArr }
           </div>
         </main>
-      
       )
     }
 
