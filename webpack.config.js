@@ -4,6 +4,9 @@ module.exports = {
   devServer: {
     publicPath: '/build/',
     // add proxy later
+    proxy: {
+      '/products': 'http://localhost:3000',
+    }
   },
 
   entry: path.resolve(__dirname, './client/index.js'),
