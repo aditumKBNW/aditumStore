@@ -34,6 +34,7 @@
         loading: false,
       });
     });
+    this.contentContainer.focus();
   }
   
   
@@ -57,7 +58,7 @@
       }
 
       return (
-        <main>
+        <main ref={(contentContainer) => { this.contentContainer = contentContainer; }} tabIndex="-1" aria-labelledby="pageHeading">
           <h2 className='currentPageTitle'>AdiStore</h2>
           <div className='product_container'>
           { productsArr }
