@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import About from './About.jsx';
-import Store from './Store.jsx'
+import Home from './Home.jsx'
 
 
 class App extends Component {
@@ -8,7 +7,7 @@ class App extends Component {
   render () {
     return (
       <main>
-        <Store />
+        <Home />
       </main>
     );
   }
