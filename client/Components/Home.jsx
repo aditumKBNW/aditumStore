@@ -7,12 +7,15 @@ import Store from './Store.jsx';
 
 
 class Home extends Component {
+
+
   render() {
     return (
       <Router>
         <Nav />
         <Switch >
-          <Route exact path="/about" component={About}/>
+          // path for the others
+          <Route exact path ='/about' component={About}/>
           <Route exact path ='/store' component={Store}/>
         </Switch>
         {/* 

@@ -32,8 +32,14 @@
       this.setState({
         products: data,
         loading: false,
-      });
-    });
+      })
+    })
+
+    document.title = 'Shop AdiStore';
+  }
+
+  componentDidUpdate() {
+    this.focusRef.focus();
   }
   
   
@@ -58,7 +64,7 @@
 
       return (
         <main>
-          <h2 className='currentPageTitle'>AdiStore</h2>
+          <h2 className='currentPageTitle' tabIndex='-1' ref={focusRef => {this.focusRef = focusRef}}>AdiStore</h2>
           <div className='product_container'>
           { productsArr }
           </div>
