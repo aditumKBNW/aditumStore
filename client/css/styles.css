@@ -84,3 +84,38 @@ nav{
 .linkColor{
   color: white;
 }
+
+/* Home Page Styles */
+
+#sidebar {
+  grid-area: sidebar;
+}
+
+#main-content {
+  grid-area: main;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+#homepage-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "sidebar main main main"
+  "sidebar main main main"
+  "sidebar main main main"
+  "footer footer footer footer";
+}
+
+.article-img {
+  width: 20%;
+  border-radius: 100%;
+}
+
+.article-header {
+  display: flex;
+  align-items: flex-end;
+}

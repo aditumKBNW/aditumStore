@@ -14,12 +14,12 @@ function Nav() {
         <Link className="linkColor" to="/store">
           <li>Store</li>
         </Link>
-        <Link className="linkColor">
+        {/* <Link className="linkColor">
           <li>Cart</li>
         </Link>
         <Link className="linkColor">
           <li>Review</li>
-        </Link>
+        </Link> */}
       </ul>
     </nav>
   )
