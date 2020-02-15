@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Nav.jsx'
 import About from './About.jsx';
 import Store from './Store.jsx';
+import MainContainer from './MainContainer.jsx';
 // import Review from './Review.jsx'
 
 
@@ -12,8 +13,9 @@ class Home extends Component {
       <Router>
         <Nav />
         <Switch >
-          <Route exact path="/about" component={About}/>
-          <Route exact path ='/store' component={Store}/>
+          <Route exact path = '/' component={MainContainer}/>
+          <Route exact path = '/about' component={About}/>
+          <Route exact path = '/store' component={Store}/>
         </Switch>
         {/* 
         <Route exact path ='/review' component={Review}/> */}
