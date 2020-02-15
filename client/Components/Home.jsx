@@ -7,17 +7,18 @@ import Store from './Store.jsx';
 
 
 class Home extends Component {
+
   render() {
     return (
-      <Router>
-        <Nav />
-        <Switch >
-          <Route exact path="/about" component={About}/>
-          <Route exact path ='/store' component={Store}/>
-        </Switch>
-        {/* 
-        <Route exact path ='/review' component={Review}/> */}
-      </Router>
+        <Router>
+          <Nav />
+          <Switch >
+            <Route exact path="/about" component={About}/>
+            <Route exact path ='/store' component={Store}/>
+          </Switch>
+          {/* 
+          <Route exact path ='/review' component={Review}/> */}
+        </Router>
     );
   }
 }

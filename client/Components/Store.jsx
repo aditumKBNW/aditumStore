@@ -19,6 +19,7 @@
     this.state = {
       loading: true,
     } 
+    this.myRef = React.createRef();
   }
 
 
@@ -34,9 +35,11 @@
         loading: false,
       });
     });
-    this.contentContainer.focus();
   }
-  
+  componentDidUpdate() {
+    console.log("this.myRef ", this.myRef);
+    this.myRef.current.focus();
+  }
   
   render() {
     const { loading, products} = this.state;
@@ -58,12 +61,12 @@
       }
 
       return (
-        <main ref={(contentContainer) => { this.contentContainer = contentContainer; }} tabIndex="-1" aria-labelledby="pageHeading">
-          <h2 className='currentPageTitle'>AdiStore</h2>
-          <div className='product_container'>
-          { productsArr }
-          </div>
-        </main>
+          <main>
+            <h2 className='currentPageTitle' tabIndex='-1' ref={ this.myRef }>AdiStore</h2>
+            <div className='product_container'>
+            { productsArr }
+            </div>
+          </main>
       )
     }
 
