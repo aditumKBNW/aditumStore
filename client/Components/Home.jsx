@@ -16,7 +16,7 @@ class Home extends Component {
     }
     this.handleKeydown = this.handleKeydown.bind(this);
   }
-  
+
   handleKeydown(event) {
     if (event.key === 'Tab') {
       if (this.state.showAccessBar === false) {
@@ -28,20 +28,7 @@ class Home extends Component {
     }
     
   }
-  componentDidMount () {
-    let mountedComponentsHome = {
-      'nav': document.querySelector("#root > main > div > nav"),
-      'sidebar': document.querySelector("#sidebar"),
-      'main-content': document.querySelector("#main-content"),
-      'photo-sb': document.querySelector("#photo-sb"),
-      'footer': document.querySelector("#footer"),
-    }
-    console.log("this.props ", this.props);
-  }
   render() {
-    console.log('this.state ', this.state);
-
-
     const showAccessBar = this.state.showAccessBar;
     let accessBar = null;
 
@@ -56,6 +43,7 @@ class Home extends Component {
     return (
       <div onKeyDown={ this.handleKeydown }>
         <Router>
+          {/* // placesaver for where accessBar will load */}
           { accessBar }
           <Nav />
           <Switch >
