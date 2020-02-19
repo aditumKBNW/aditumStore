@@ -28,9 +28,19 @@ class Home extends Component {
     }
     
   }
-
+  componentDidMount () {
+    let mountedComponentsHome = {
+      'nav': document.querySelector("#root > main > div > nav"),
+      'sidebar': document.querySelector("#sidebar"),
+      'main-content': document.querySelector("#main-content"),
+      'photo-sb': document.querySelector("#photo-sb"),
+      'footer': document.querySelector("#footer"),
+    }
+    console.log("this.props ", this.props);
+  }
   render() {
     console.log('this.state ', this.state);
+
 
     const showAccessBar = this.state.showAccessBar;
     let accessBar = null;
@@ -49,6 +59,7 @@ class Home extends Component {
           { accessBar }
           <Nav />
           <Switch >
+            <Route exact path="/" component={MainContainer}/>
             <Route exact path="/about" component={About}/>
             <Route exact path ='/store' component={Store}/>
           </Switch>
