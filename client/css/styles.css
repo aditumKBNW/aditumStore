@@ -84,3 +84,77 @@ nav{
 .linkColor{
   color: white;
 }
+
+/* Home Page Styles */
+
+#sidebar {
+  grid-area: sidebar;
+  padding: 2em;
+}
+
+#main-content {
+  grid-area: main;
+  padding: 2em;
+}
+
+#footer {
+  grid-area: footer;
+  padding: 1em;
+  text-align: right;
+}
+
+#photo-sb {
+  grid-area: photos;
+  padding: 2em;
+}
+
+#homepage-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "photos main main main sidebar"
+  "photos main main main sidebar"
+  "photos main main main sidebar"
+  "footer footer footer footer footer";
+}
+
+.article {
+  margin: 1em;
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+
+.article p {
+  margin: .5em 0;
+}
+
+.article span {
+  font-style: italic;
+}
+
+.article-img {
+  width: 15%;
+  border-radius: 100%;
+  margin-bottom: .5em;
+}
+
+.sb-article {
+  margin-top: 1em;
+}
+
+.cheese-photo {
+  width: 80%;
+  text-align: center;
+  margin: 1em 0;
+}
+
+#footer ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#footer li {
+  list-style-type: none;
+  margin-left: 1.5em;
+}

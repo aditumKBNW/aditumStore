@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Nav.jsx'
 import About from './About.jsx';
 import Store from './Store.jsx';
-import AccessBar from './AccessBar.jsx';
+import AccessBar from './AccessBar';
+import MainContainer from './MainContainer.jsx';
+// import Review from './Review.jsx'
+
 
 class Home extends Component {
   constructor(props) {
