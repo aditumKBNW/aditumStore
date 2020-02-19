@@ -20,8 +20,9 @@
  const Sidebar = (props) => {
    return (
      <section id='sidebar'>
+       <h1>Sidebar</h1>
        <div className='sb-article'>
-          <h1>This is a Sidebar</h1>
+          <h2>SubHeading</h2>
           <p>Fromage say cheese mozzarella. Monterey jack fromage st. agur blue cheese when the cheese comes out everybody's happy melted cheese edam cheesecake camembert de normandie.</p>
        </div>
        <div className='sb-article'>
@@ -43,6 +44,7 @@
    }
    return (
      <section id='main-content'>
+       <h1>Main Content - Article Section</h1>
        {articleList}
      </section>
    )
@@ -64,6 +66,7 @@
  const Photos = (props) => {
    return (
      <section id='photo-sb'>
+       <h1>Photo Sidebar</h1>
        <img className='cheese-photo' src = 'https://images.unsplash.com/photo-1566454825481-4e48f80aa4d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' alt='cheese selction at market'></img>
        <img className='cheese-photo' src='https://images.unsplash.com/photo-1578932599431-eb1333a0069f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' alt='charcuterie spread'></img>
        <img className='cheese-photo' src='https://images.unsplash.com/photo-1576512259505-bd5cd2a70ff8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' alt='a goat looking at the camera'></img>
