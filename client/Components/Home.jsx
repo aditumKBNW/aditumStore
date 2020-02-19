@@ -32,6 +32,8 @@ class Home extends Component {
     const showAccessBar = this.state.showAccessBar;
     let accessBar = null;
 
+    // still need to set focus to dropdown when accessBar is true
+    // set focus to navbar when accessBar is false
     if (showAccessBar) {
       accessBar = <AccessBar onClick={ this.handleKeydown }/>;
     } else {
