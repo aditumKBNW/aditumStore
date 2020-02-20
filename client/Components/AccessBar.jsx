@@ -15,16 +15,12 @@ const barStyle =  {
   backgroundColor: 'gray',
 };
 
-// ['sidebar', 'main-content', 'photo-sb', 'footer']
-
-
 export default class AccessBar extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       sections: null,
-      currentSelection: null,
     }
     this.handleChange = this.handleChange.bind(this);
     this.myRef = React.createRef();
@@ -35,21 +31,20 @@ export default class AccessBar extends Component {
     let currentElement = document.querySelector(`#${currentId}`);
     currentElement.tabIndex = -1;
     this.myRef.current = currentElement;
-    this.setState({
-      currentSelection: currentId,
-    })
     this.myRef.current.focus();
   };
 
-  componentDidMount() {
-    this.setState({
-      sections: this.props.sections,
-    })
-  }
+  // componentDidMount() {
+  //   const dropdown = document.querySelector('#dropdown');
+  //   dropdown.tabIndex = -1;
+  //   this.myRef.current = dropdown;
+  //   this.myRef.current.focus();
+
+  //   console.log('query selector dropdown ', document.querySelector('#dropdown'))
+  //   console.log('this.myRef.current ', this.myRef.current)
+  // }
 
   render() {
-
-    // console.log(this.props)
     const keys = Object.keys(this.props.sections);
     const options = [];
     for (let i = 0; i < keys.length; i++) {
@@ -66,6 +61,7 @@ export default class AccessBar extends Component {
             placeholder='Sections of this page'
             ariaLabel='Navigation Assistant'
             setSelected={this.handleChange}
+            id='dropdown'
           />
         </div>
       </div>

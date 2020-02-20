@@ -5,61 +5,47 @@ import About from './About.jsx';
 import Store from './Store.jsx';
 import AccessBar from './AccessBar.jsx';
 import MainContainer from './MainContainer.jsx';
-// import Review from './Review.jsx'
-
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showAccessBar: false,
+      accessBar: null,
+      sections: {
+        'sidebar': 'sidebar',
+        'main content': 'main-content',
+        'photo sidebar': 'photo-sb',
+        'footer': 'footer'
+      },
     }
     this.handleKeydown = this.handleKeydown.bind(this);
+    this.barRef = React.createRef();
   }
 
   handleKeydown(event) {
     if (event.key === 'Tab') {
-      if (this.state.showAccessBar === false) {
-        this.setState({ showAccessBar: true })
+      if (!this.state.accessBar) {
+        this.setState({
+          accessBar: <AccessBar sections={this.state.sections} ref={this.barRef}/>,
+         })
       }
-      if (this.state.showAccessBar === true) {
-        this.setState({ showAccessBar: false })
+      if (this.state.accessBar) {
+        this.setState({ accessBar: null })
       }
     }
-    
   }
+
   render() {
-    const showAccessBar = this.state.showAccessBar;
-    let accessBar = null;
-
-    const sections = {
-      'sidebar': 'sidebar',
-      'main content': 'main-content',
-      'photo sidebar': 'photo-sb',
-      'footer': 'footer'
-    }
-
-    // still need to set focus to dropdown when accessBar is true
-    // set focus to navbar when accessBar is false
-    if (showAccessBar) {
-      accessBar = <AccessBar sections={sections} onClick={ this.handleKeydown }/>;
-    } else {
-      accessBar = null;
-    }
-
     return (
       <div onKeyDown={ this.handleKeydown }>
         <Router>
-          {/* // placesaver for where accessBar will load */}
-          { accessBar }
+          { this.state.accessBar }
           <Nav />
           <Switch >
             <Route exact path="/" component={MainContainer}/>
             <Route exact path="/about" component={About}/>
             <Route exact path ='/store' component={Store}/>
           </Switch>
-          {/* 
-          <Route exact path ='/review' component={Review}/> */}
         </Router>
         </div>
     );
