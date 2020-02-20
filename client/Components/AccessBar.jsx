@@ -1,59 +1,125 @@
-/*
+/**
  * @description accessibility bar component to allow user to jump focus to different components on screen
+ * importing an aria-compliant dropdown package
+ * able to target focus with the setSelected option in that package
+ * 
+ * 
+ * @todo Be able to show on combination of button presses
+ * @todo Conditional rendering inside the render method that initially renders an h1 that tells screen readers how to use the navigation bar
+ * 
+ * @todo Be able to switch color themes for colorblind/ high contrast 
+ * @todo Route handling dropdown for other pages on site
+ * @todo Dynamically filling the aria-labels 
+ * 
+ * 
+ * @notes The way the fb accessbar works is that: 
+ * 1. first tab shows the bar and focuses to it
+ * 2. next tabs exit the fb access bar and moves to correct elements on page
+ * 3. to unhide the bar and refocus, press option + '/'
+ * 
+ * 
+ * 
+ *
 */
+
+
 import React, { Component } from 'react';
 import Dropdown from 'react-dropdown-aria';
 import styles from '../css/dropdown.js';
 
-const barStyle =  {
-  display: 'flex',
-  paddingTop: '.1em',
-  paddingBottom: '.1em',
-  paddingLeft: '5em',
-  alignItems: 'center',
-  fontSize: '.8em',
-  backgroundColor: 'gray',
-};
-
-// ['sidebar', 'main-content', 'photo-sb', 'footer']
-
-
 export default class AccessBar extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      sections: null,
-      currentSelection: null,
+      config: null,
+      // if true render the hidden h1
+      // otherwise render the accessibility bar
+      isHidden: true,
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.setFocus = this.setFocus.bind(this);
+    this.toggleBar = this.toggleBar.bind(this);
     this.myRef = React.createRef();
   }
 
-  handleChange(e) {
-    let currentId = this.state.sections[e];
+  toggleBar(e) {
+    console.log(e.key);
+  }
+
+  // method that directs focus to the selected element of the dropdown
+  setFocus(e) {
+    // grabs id of the associated element in the dropdown
+    let currentId = this.state.config[e];
     let currentElement = document.querySelector(`#${currentId}`);
     currentElement.tabIndex = -1;
+
+    // point the created ref to our current element
     this.myRef.current = currentElement;
-    this.setState({
-      currentSelection: currentId,
-    })
     this.myRef.current.focus();
   };
 
   componentDidMount() {
-    this.setState({
-      sections: this.props.sections,
+
+    // adding multiple key down events 
+    let keyDownObj = {};
+
+    document.addEventListener('keydown', (event) => {
+      keyDownObj[event.key] = true;
+
+      if (keyDownObj['Alt'] && (keyDownObj['/'] || keyDownObj['÷'])) {
+        if (this.state.isHidden) {
+          this.setState({
+            isHidden: false,
+          })
+        } else {
+          this.setState({
+            isHidden: true,
+          });
+        }
+        console.log('AYYYY');
+      }
     })
+
+    document.addEventListener('keyup', (event) =>{
+      keyDownObj = {};
+    })
+    
+
+    // adds configurations prop to state
+    this.setState({
+      config: this.props.config,
+    });
   }
 
   render() {
 
-    // console.log(this.props)
-    const keys = Object.keys(this.props.sections);
+    // adding event listener for keydown 
+
+    // default style, come back later to modularize and add other styles
+    const barStyle =  {
+      display: 'flex',
+      paddingTop: '.1em',
+      paddingBottom: '.1em',
+      paddingLeft: '5em',
+      alignItems: 'center',
+      fontSize: '.8em',
+      backgroundColor: 'gray',
+    };
+
+    if (this.state.isHidden) {
+      const hiddenH1Styles = {
+        display: 'block',
+        overflow: 'hidden',
+        textIndent: '100%',
+        whiteSpace: 'nowrap',
+        fontSize: '0.01px',
+      }
+      return <h1 id='hiddenH1' style={hiddenH1Styles}>Look at this</h1>;
+    }
+    // sets labels for our dropdown menu
+    const dropdownKeys = Object.keys(this.props.config);
     const options = [];
-    for (let i = 0; i < keys.length; i++) {
-      options.push({ value: keys[i]});
+    for (let i = 0; i < dropdownKeys.length; i++) {
+      options.push({ value: dropdownKeys[i]});
     }
 
     return (
@@ -65,7 +131,7 @@ export default class AccessBar extends Component {
             style={styles}
             placeholder='Sections of this page'
             ariaLabel='Navigation Assistant'
-            setSelected={this.handleChange}
+            setSelected={this.setFocus}
           />
         </div>
       </div>
