@@ -9,30 +9,30 @@ import MainContainer from './MainContainer.jsx';
 
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAccessBar: false,
-    }
-    this.handleKeydown = this.handleKeydown.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     showAccessBar: false,
+  //   }
+  //   this.handleKeydown = this.handleKeydown.bind(this);
+  // }
 
-  handleKeydown(event) {
-    if (event.key === 'Tab') {
-      if (this.state.showAccessBar === false) {
-        this.setState({ showAccessBar: true })
-      }
-      if (this.state.showAccessBar === true) {
-        this.setState({ showAccessBar: false })
-      }
-    }
+  // handleKeydown(event) {
+  //   if (event.key === 'Tab') {
+  //     if (this.state.showAccessBar === false) {
+  //       this.setState({ showAccessBar: true })
+  //     }
+  //     if (this.state.showAccessBar === true) {
+  //       this.setState({ showAccessBar: false })
+  //     }
+  //   }
     
-  }
+  // }
   render() {
-    const showAccessBar = this.state.showAccessBar;
-    let accessBar = null;
+    // const showAccessBar = this.state.showAccessBar;
+    // let accessBar = null;
 
-    const sections = {
+    const config = {
       'sidebar': 'sidebar',
       'main content': 'main-content',
       'photo sidebar': 'photo-sb',
@@ -41,17 +41,16 @@ class Home extends Component {
 
     // still need to set focus to dropdown when accessBar is true
     // set focus to navbar when accessBar is false
-    if (showAccessBar) {
-      accessBar = <AccessBar sections={sections} onClick={ this.handleKeydown }/>;
-    } else {
-      accessBar = null;
-    }
+    // if (showAccessBar) {
+    //   accessBar = <AccessBar config={config} onClick={ this.handleKeydown }/>;
+    // } else {
+    //   accessBar = null;
+    // }
 
     return (
       <div onKeyDown={ this.handleKeydown }>
         <Router>
-          {/* // placesaver for where accessBar will load */}
-          { accessBar }
+        <AccessBar config={config}/>
           <Nav />
           <Switch >
             <Route exact path="/" component={MainContainer}/>
