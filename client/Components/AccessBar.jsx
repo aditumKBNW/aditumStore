@@ -37,12 +37,7 @@ export default class AccessBar extends Component {
       isHidden: true,
     }
     this.setFocus = this.setFocus.bind(this);
-    this.toggleBar = this.toggleBar.bind(this);
     this.myRef = React.createRef();
-  }
-
-  toggleBar(e) {
-    console.log(e.key);
   }
 
   // method that directs focus to the selected element of the dropdown
@@ -58,7 +53,6 @@ export default class AccessBar extends Component {
   };
 
   componentDidMount() {
-
     // adding multiple key down events 
     let keyDownObj = {};
 
@@ -75,15 +69,13 @@ export default class AccessBar extends Component {
             isHidden: true,
           });
         }
-        console.log('AYYYY');
       }
-    })
+    });
 
-    document.addEventListener('keyup', (event) =>{
+    document.addEventListener('keyup', () =>{
       keyDownObj = {};
-    })
+    });
     
-
     // adds configurations prop to state
     this.setState({
       config: this.props.config,
@@ -91,9 +83,6 @@ export default class AccessBar extends Component {
   }
 
   render() {
-
-    // adding event listener for keydown 
-
     // default style, come back later to modularize and add other styles
     const barStyle =  {
       display: 'flex',
@@ -105,6 +94,7 @@ export default class AccessBar extends Component {
       backgroundColor: 'gray',
     };
 
+    // render the hidden h1
     if (this.state.isHidden) {
       const hiddenH1Styles = {
         display: 'block',
@@ -113,8 +103,9 @@ export default class AccessBar extends Component {
         whiteSpace: 'nowrap',
         fontSize: '0.01px',
       }
-      return <h1 id='hiddenH1' style={hiddenH1Styles}>Look at this</h1>;
+      return <h1 id='hiddenH1' style={hiddenH1Styles}>To enter navigation assistant, press alt + /.</h1>;
     }
+
     // sets labels for our dropdown menu
     const dropdownKeys = Object.keys(this.props.config);
     const options = [];
@@ -135,6 +126,6 @@ export default class AccessBar extends Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
